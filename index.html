@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finančný sprostredkovateľ | Riešenia pre vaše financie</title>
+    <meta
+      name="description"
+      content="Finančný sprostredkovateľ pre hypotéky, osobné úvery, refinancovanie a poistenie. Rýchle a bezpečné riešenia na mieru."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=4" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#top" class="brand" aria-label="Domov">
+          <span class="brand-mark">FS</span>
+          <span class="brand-text">Finančný sprostredkovateľ</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Otvoriť menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+          <a href="#top">Domov</a>
+          <a href="#o-nas">O nás</a>
+          <a href="#sluzby">Služby</a>
+          <a href="#proces">Proces</a>
+          <a href="#kalkulator">Kalkulačka</a>
+          <a href="#blog">Blog</a>
+          <a href="#faq">FAQ</a>
+          <a href="#kontakt" class="nav-cta">Bezplatná konzultácia</a>
+        </nav>
+      </div>
+    </header>
+
+    <button type="button" class="admin-toggle" id="adminToggle" aria-label="Admin prístup">A</button>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1>Pomôžem vám robiť lepšie finančné rozhodnutia.</h1>
+            <p>
+              transparentnosť a riešenie, ktoré zodpovedá vašim cieľom, vášmu životnému štýlu
+              a finančnej realite.
+            </p>
+            <div class="hero-actions">
+              <a href="#kontakt" class="btn btn-primary">Chcem konzultáciu</a>
+            </div>
+
+            <ul class="hero-points">
+              <li>Objektívne poradenstvo</li>
+              <li>Jasný postup krok za krokom</li>
+            </ul>
+          </div>
+
+          <div class="hero-card">
+            <div class="card-badge">Dnes dostupné</div>
+            <h2>Riešenia pre bývanie, ochranu a rast majetku</h2>
+            <div class="mini-stat">
+              <span>Hypotéky</span>
+              <strong>analýza + návrh</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Poistenie</span>
+              <strong>správne krytie rizík</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Investície</span>
+              <strong>dlhodobé plánovanie</strong>
+            </div>
+            <a href="#kalkulator" class="text-link">Vypočítať splátku →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-bar">
+        <div class="container trust-grid">
+          <div>
+            <strong>?+</strong>
+            <span>zhodnotených klientov</span>
+          </div>
+          <div>
+            <strong>?+</strong>
+            <span>realizovaných riešení</span>
+          </div>
+          <div>
+            <strong>? kroky</strong>
+            <span>k transparentnej spolupráci</span>
+          </div>
+          <div>
+            <strong>?%</strong>
+            <span>osobný prístup</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sluzby">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Čo pre vás môžem urobiť</span>
+            <h2>Komplexné finančné riešenia</h2>
+          </div>
+
+          <div class="card-grid four-col">
+            <article class="feature-card">
+              <div class="icon">🏠</div>
+              <h3>Hypotéky a refinancovanie</h3>
+              <p>
+                Pomôžeme vám vybrať vhodnú hypotéku, zhodnotiť aktuálne zmluvy a ušetriť na úrokoch
+                a poplatkoch.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">🛡️</div>
+              <h3>Poistenie</h3>
+              <p>
+                Posúdime poistenie osôb, majetku i podnikania tak, aby vaše riziká boli správne pokryté.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">📈</div>
+              <h3>Investície & dôchodok</h3>
+              <p>
+                Navrhneme strategiu budovania majetku, investičné riešenia a postup na ceste k dôchodku.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">🏢</div>
+              <h3>Finančné plánovanie pre firmy</h3>
+              <p>
+                Zhodnotíme cash flow, financovanie a optimalizáciu podnikateľských rozhodnutí v kontexte rastu.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="proces">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Ako prebieha naša spolupráca</span>
+            <h2>Transparentný proces bez nátlaku</h2>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <span class="step-number">01</span>
+              <h3>Zoznamovacia káva</h3>
+              <p>Prvé stretnutie je o vás. Chcem pochopiť vašu situáciu, ciele a obavy bez stresu a bez záväzku.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">02</span>
+              <h3>Finančná analýza</h3>
+              <p>Zanalyzujem vaše súčasné zmluvy, poplatky a efektivitu vašich financií, aby bolo možné nájsť skutočné príležitosti.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">03</span>
+              <h3>Návrh stratégie</h3>
+              <p>Na základe vášho rozhodnutia vám predstavím konkrétny plán s vysvetlením, prečo dané riešenie dáva zmysel.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">04</span>
+              <h3>Servis a starostlivosť</h3>
+              <p>Po podpise dokumentov vám zostávam nablízku. Finančná situácia sa mení, preto je dôležitá aj dlhodobá podpora.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="kalkulator">
+        <div class="container calculator-wrap">
+          <div class="calculator-copy">
+            <span class="eyebrow">Kalkulačka</span>
+            <h2>Vypočítajte si splátku</h2>
+            <p>
+              Získajte orientačný prehľad o mesačnej splátke, investičnom raste alebo poistení bez záväzku.
+            </p>
+            <ul class="check-list">
+              <li>Výpočet na základe vašich cieľov a potrieb</li>
+              <li>Prepínanie medzi jednotlivými typmi kalkulačiek</li>
+              <li>Rýchla a jednoduchá orientácia</li>
+            </ul>
+          </div>
+
+          <div class="calculator-panel calculator-shell">
+            <div class="calculator-tabs" role="tablist" aria-label="Typy kalkulačiek">
+              <button type="button" class="calculator-tab active" data-calculator="mortgage" role="tab" aria-selected="true">Hypotéka</button>
+              <button type="button" class="calculator-tab" data-calculator="investment" role="tab" aria-selected="false">Investícia</button>
+              <button type="button" class="calculator-tab" data-calculator="insurance" role="tab" aria-selected="false">Poistenie</button>
+            </div>
+
+            <div class="calculator-variant active" data-panel="mortgage">
+              <label>
+                Výška úveru
+                <div class="input-row">
+                  <input id="loanAmount" type="range" min="20000" max="500000" step="5000" value="180000" />
+                  <span id="loanAmountValue">180 000 €</span>
+                </div>
+              </label>
+
+              <label>
+                Doba splácania
+                <div class="input-row">
+                  <input id="loanTerm" type="range" min="1" max="30" step="1" value="20" />
+                  <span id="loanTermValue">20 rokov</span>
+                </div>
+              </label>
+
+              <label>
+                Ročný úrok
+                <div class="input-row">
+                  <input id="interestRate" type="range" min="1" max="10" step="0.1" value="4.2" />
+                  <span id="interestRateValue">4,2 %</span>
+                </div>
+              </label>
+
+              <div class="calculator-results">
+                <div>
+                  <span>Mesačná splátka</span>
+                  <strong id="monthlyPayment">0 €</strong>
+                </div>
+                <div>
+                  <span>Celkom k zaplateniu</span>
+                  <strong id="totalPayment">0 €</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="calculator-variant" data-panel="investment">
+              <label>
+                Počiatočný vklad
+                <div class="input-row">
+                  <input id="investmentAmount" type="range" min="1000" max="200000" step="1000" value="30000" />
+                  <span id="investmentAmountValue">30 000 €</span>
+                </div>
+              </label>
+
+              <label>
+                Doba investovania
+                <div class="input-row">
+                  <input id="investmentYears" type="range" min="1" max="30" step="1" value="10" />
+                  <span id="investmentYearsValue">10 rokov</span>
+                </div>
+              </label>
+
+              <label>
+                Ročný výnos
+                <div class="input-row">
+                  <input id="investmentReturn" type="range" min="1" max="15" step="0.1" value="6.5" />
+                  <span id="investmentReturnValue">6,5 %</span>
+                </div>
+              </label>
+
+              <div class="calculator-results">
+                <div>
+                  <span>Predpokladaný zisk</span>
+                  <strong id="investmentProfit">0 €</strong>
+                </div>
+                <div>
+                  <span>Celková hodnota</span>
+                  <strong id="investmentTotal">0 €</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="calculator-variant" data-panel="insurance">
+              <label>
+                Poistená suma
+                <div class="input-row">
+                  <input id="insuranceSum" type="range" min="10000" max="300000" step="5000" value="120000" />
+                  <span id="insuranceSumValue">120 000 €</span>
+                </div>
+              </label>
+
+              <label>
+                Doba poistenia
+                <div class="input-row">
+                  <input id="insuranceTerm" type="range" min="1" max="30" step="1" value="10" />
+                  <span id="insuranceTermValue">10 rokov</span>
+                </div>
+              </label>
+
+              <label>
+                Mesačná prémia
+                <div class="input-row">
+                  <input id="insurancePremiumRate" type="range" min="0.1" max="5" step="0.1" value="1.4" />
+                  <span id="insurancePremiumRateValue">1,4 %</span>
+                </div>
+              </label>
+
+              <div class="calculator-results">
+                <div>
+                  <span>Mesačná prémiová sadzba</span>
+                  <strong id="insuranceMonthlyPremium">0 €</strong>
+                </div>
+                <div>
+                  <span>Ročné náklady</span>
+                  <strong id="insuranceYearlyCost">0 €</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="o-nas">
+        <div class="container about-grid">
+          <div class="about-visual">
+            <div class="visual-card">
+              <span class="small-title">Prečo nás klienti volia</span>
+              <h3>Transparentnosť, odbornosť a osobný prístup.</h3>
+              <p>
+                Som finančný poradca, ktorý pracuje s dôrazom na transparentnosť, bezpečnosť a
+                individuálne riešenie pre každého klienta.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-content">
+            <span class="eyebrow">O nás</span>
+            <h2>Váš finančný partner s prístupom bez nátlaku</h2>
+            <p>
+              Moja práca nie je o predávaní zmlúv, ale o budovaní vzťahu a vytváraní dlhodobej
+              finančnej stability. Pomáham klientom zhodnotiť ich aktuálnu situáciu, identifikovať
+              zbytočné náklady a vybrať riešenie, ktoré je pre nich najvýhodnejšie.
+            </p>
+            <div class="feature-list">
+              <div>
+                <strong>Transparentnosť</strong>
+                <span>Všetko vysvetľujem jasne, bez zbytočných komplikácií a bez skrytých poplatkov.</span>
+              </div>
+              <div>
+                <strong>Objektívnosť</strong>
+                <span>Moja odmena je transparentná a nezávislá, preto môžem zostať nestranný.</span>
+              </div>
+              <div>
+                <strong>Dlhodobá podpora</strong>
+                <span>Neukončujem spoluprácu po podpise. Pomáham aj pri zmene životných okolností.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Referencie</span>
+            <h2>Čo o nás hovoria klienti</h2>
+          </div>
+
+          <div class="card-grid three-col">
+            <blockquote class="testimonial-card">
+              “Veľmi rýchlo sme našli výhodnú hypotéku. Personálne poradenstvo bolo veľmi profesionálne a
+              transparentné.”
+              <footer>— Mária, Bratislava</footer>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              “Dostali sme spravodlivý návrh a úspešne sme refinancovali úver. Výsledok bol lepší, než sme
+              čakali.”
+              <footer>— Peter, Banská Bystrica</footer>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              “Všetko prebehlo bez stresu. Dokázali sme vyjednať lepšie podmienky a mať prehľad o všetkom.”
+              <footer>— Lucia, Nitra</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="blog">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Blog & rady</span>
+            <h2>Články, ktoré pomáhajú klientom robiť lepšie rozhodnutia</h2>
+          </div>
+
+          <div id="blogGrid" class="card-grid three-col blog-grid"></div>
+
+          <div class="blog-show-more-wrap">
+            <button id="blogToggleButton" type="button" class="blog-toggle-button hidden">
+              Zobraziť všetky články
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="faq">
+        <div class="container faq-wrap">
+          <div class="section-heading left">
+            <span class="eyebrow">FAQ</span>
+            <h2>Najčastejšie otázky</h2>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item active">
+              <button class="faq-question" type="button">
+                Sú vaše služby skutočne bezplatné?
+              </button>
+              <div class="faq-answer">
+                <p>Áno, prvotná konzultácia a posúdenie vašej situácie je bezplatná. V závislosti od typu služby sa
+                dohodneme na konkrétnej cene alebo provízii.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                Môžem získať úver, ak mám nižší príjem?
+              </button>
+              <div class="faq-answer">
+                <p>Rovnako ako pri každom úvere, aj tu záleží na vašej celkovej finančnej situácii a stabilite.
+                Pomôžeme vám zhodnotiť reálne možnosti a navrhnúť vhodné riešenie.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                Je potrebné mať už pripravené dokumenty?
+              </button>
+              <div class="faq-answer">
+                <p>Nie je to povinné, ale aby sme proces urýchlili, je vhodné mať po ruke doklady o príjmoch,
+                majetku a dlhodobých záväzkoch.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                Môžete pomôcť aj s refinancovaním existujúceho úveru?
+              </button>
+              <div class="faq-answer">
+                <p>Áno, pomôžeme vám preskúmať aktuálnu zmluvu a nájsť výhodnejšie riešenie, ktoré môže znížiť
+                mesačné náklady alebo dobu splácania.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="adminOverlay" class="admin-overlay hidden">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+          <button type="button" class="admin-close" id="adminClose" aria-label="Zavrieť">×</button>
+
+          <div id="adminLoginBlock">
+            <h3 id="adminTitle">Admin prístup</h3>
+            <form id="adminLoginForm" class="admin-form">
+              <label>
+                Heslo
+                <input type="password" id="adminPassword" placeholder="Zadajte heslo" required />
+              </label>
+              <button type="submit" class="btn btn-primary">Prihlásiť sa</button>
+            </form>
+          </div>
+
+          <div id="adminPanel" class="hidden">
+            <div class="admin-header-row">
+              <h3>Správa blogu</h3>
+              <button type="button" id="logoutAdmin" class="btn btn-secondary">Odhlásiť</button>
+            </div>
+
+            <form id="blogForm" class="admin-form admin-form-grid">
+              <input type="hidden" id="postId" />
+
+              <label>
+                Názov článku
+                <input type="text" id="postTitle" placeholder="Napíšte názov článku" required />
+              </label>
+
+              <label>
+                Kategória
+                <input type="text" id="postCategory" placeholder="Hypotéky, poistenie, investície" required />
+              </label>
+
+              <label class="full-width">
+                Krátky popis
+                <textarea id="postExcerpt" rows="2" placeholder="Krátky úvod do článku" required></textarea>
+              </label>
+
+              <label class="full-width">
+                Obsah článku
+                <textarea id="postContent" rows="8" placeholder="Celý text článku" required></textarea>
+              </label>
+
+              <div class="form-actions full-width">
+                <button type="submit" class="btn btn-primary" id="savePostBtn">Uložiť článok</button>
+                <button type="button" class="btn btn-secondary" id="resetPostForm">Vymazať formulár</button>
+              </div>
+            </form>
+
+            <div class="admin-list-wrap">
+              <h4>Existujúce články</h4>
+              <div id="adminPostList" class="admin-post-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="articleModal" class="article-modal hidden" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+        <div class="article-modal-content">
+          <button type="button" class="article-close" id="articleClose" aria-label="Zavrieť článok">×</button>
+          <div id="articleBody"></div>
+        </div>
+      </div>
+
+      <section class="section cta-section" id="kontakt">
+        <div class="container cta-box">
+          <div>
+            <span class="eyebrow">Rýchla kalkulačka</span>
+            <h2>Pripravíme riešenie na mieru</h2>
+            <p>Stačí pár základných údajov. Ozveme sa vám a prejdeme spolu najvhodnejšie možnosti.</p>
+
+            <div class="form-steps" aria-label="Postup vyplnenia formulára">
+              <div class="form-step">
+                <span class="form-step-number">1</span>
+                <p><strong>Upresníte nám vaše podmienky</strong> pre individuálne nastavenie.</p>
+              </div>
+              <div class="form-step">
+                <span class="form-step-number">2</span>
+                <p>Prepojíme vás s <strong>expertom</strong>, s ktorým môžete všetko prebrať.</p>
+              </div>
+              <div class="form-step">
+                <span class="form-step-number">3</span>
+                <p>Pomôžeme vám s <strong>podkladmi</strong> a dotiahneme riešenie.</p>
+              </div>
+            </div>
+
+            <div class="quick-contact">
+              <h3>Rýchle spojenie</h3>
+              <div class="quick-contact-row">
+                <span>Telefón</span>
+                <a href="tel:+421912345678">?</a>
+              </div>
+              <div class="quick-contact-row">
+                <span>E-mail</span>
+                <a href="mailto:info@financnypartner.sk">?</a>
+              </div>
+              <div class="quick-contact-row">
+                <span>Kancelária</span>
+                <span>?</span>
+              </div>
+              <div class="quick-contact-row">
+                <span>Mapa</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Mestská+1,+010+01+Žilina" target="_blank" rel="noreferrer">Otvoriť Google Mapy →</a>
+              </div>
+            </div>
+          </div>
+
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="https://formsubmit.co/q4qsro@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Nový dopyt z webu Finančný partner" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honeypot" aria-hidden="true" />
+            <div class="field-row">
+              <input type="text" name="Meno" placeholder="Meno" autocomplete="given-name" required />
+              <input type="text" name="Priezvisko" placeholder="Priezvisko" autocomplete="family-name" required />
+            </div>
+            <div class="field-row">
+              <input type="email" name="E-mail" placeholder="E-mail" required />
+              <input type="tel" name="Telefón" placeholder="Telefónne číslo" autocomplete="tel" required />
+            </div>
+            <select name="Typ služby" class="contact-select" aria-label="Vyberte typ služieb" required>
+              <option value="">Vyberte typ služby</option>
+              <option value="Hypotéka">Hypotéka</option>
+              <option value="Poistenie">Poistenie</option>
+              <option value="Refinancovanie">Refinancovanie</option>
+              <option value="Investície">Investície</option>
+              <option value="Plánovanie a poradenstvo">Plánovanie a poradenstvo</option>
+            </select>
+
+            <div class="service-fields" id="serviceFields" aria-live="polite">
+              <div class="service-panel" data-service-fields="Hypotéka" hidden>
+                <p class="service-panel-title">Údaje pre orientačné posúdenie hypotéky</p>
+                <div class="field-row">
+                  <select name="Účel hypotéky" aria-label="Účel hypotéky" required>
+                    <option value="">Účel hypotéky</option>
+                    <option value="Kúpa nehnuteľnosti">Kúpa nehnuteľnosti</option>
+                    <option value="Výstavba alebo rekonštrukcia">Výstavba alebo rekonštrukcia</option>
+                    <option value="Iný účel">Iný účel</option>
+                  </select>
+                  <input type="text" name="Výška hypotéky" placeholder="Výška hypotéky" inputmode="numeric" data-money-input required />
+                </div>
+                <div class="field-row">
+                  <input type="number" name="Doba splácania" min="1" max="40" placeholder="Doba splácania (roky)" inputmode="numeric" required />
+                  <select name="Typ príjmu" aria-label="Typ príjmu" required>
+                    <option value="">Typ príjmu</option>
+                    <option value="TPP">TPP</option>
+                    <option value="SZČO">SZČO</option>
+                    <option value="Dohoda alebo iné">Dohoda alebo iné</option>
+                  </select>
+                </div>
+                <div class="field-row">
+                  <input type="text" name="Čistý mesačný príjem" placeholder="Čistý mesačný príjem" inputmode="numeric" data-money-input required />
+                  <input type="number" name="Počet detí" min="0" max="20" placeholder="Počet detí" inputmode="numeric" />
+                </div>
+                <div class="field-row">
+                  <select name="Rodinný stav" aria-label="Rodinný stav">
+                    <option value="">Rodinný stav</option>
+                    <option value="Slobodný/á">Slobodný/á</option>
+                    <option value="Ženatý/vydatá">Ženatý/vydatá</option>
+                    <option value="Rozvedený/á">Rozvedený/á</option>
+                    <option value="Iné">Iné</option>
+                  </select>
+                  <select name="Iné úvery" aria-label="Iné úvery">
+                    <option value="">Máte iné úvery?</option>
+                    <option value="Nie">Nie</option>
+                    <option value="Áno">Áno</option>
+                  </select>
+                </div>
+                <label class="switch-row">
+                  <input type="checkbox" name="Poistenie úveru" value="Áno, mám záujem o poistenie úveru" />
+                  <span>Mám záujem aj o poistenie úveru</span>
+                </label>
+              </div>
+
+              <div class="service-panel" data-service-fields="Refinancovanie" hidden>
+                <p class="service-panel-title">Údaje k súčasnému úveru</p>
+                <div class="field-row">
+                  <input type="text" name="Zostatok úveru" placeholder="Zostatok úveru" inputmode="numeric" data-money-input required />
+                  <input type="text" name="Aktuálna splátka" placeholder="Aktuálna splátka" inputmode="numeric" data-money-input required />
+                </div>
+                <div class="field-row">
+                  <input type="text" name="Súčasná banka" placeholder="Súčasná banka" required />
+                  <input type="month" name="Koniec fixácie" aria-label="Koniec fixácie" required />
+                </div>
+                <select name="Dôvod refinancovania" aria-label="Dôvod refinancovania">
+                  <option value="">Dôvod refinancovania</option>
+                  <option value="Nižšia splátka">Chcem nižšiu splátku</option>
+                  <option value="Koniec fixácie">Končí mi fixácia</option>
+                  <option value="Navýšenie úveru">Chcem úver navýšiť</option>
+                  <option value="Iný dôvod">Iný dôvod</option>
+                </select>
+              </div>
+
+              <div class="service-panel" data-service-fields="Poistenie" hidden>
+                <p class="service-panel-title">Čo potrebujete poistiť?</p>
+                <div class="field-row">
+                  <select name="Typ poistenia" aria-label="Typ poistenia" required>
+                    <option value="">Typ poistenia</option>
+                    <option value="Životné poistenie">Životné poistenie</option>
+                    <option value="Poistenie majetku">Poistenie majetku</option>
+                    <option value="Poistenie úveru">Poistenie úveru</option>
+                    <option value="Poistenie podnikania">Poistenie podnikania</option>
+                  </select>
+                  <input type="number" name="Vek poistenej osoby" min="18" max="100" placeholder="Vek poistenej osoby" inputmode="numeric" required />
+                </div>
+                <div class="field-row">
+                  <input type="text" name="Povolanie" placeholder="Povolanie" />
+                  <input type="text" name="Požadované krytie" placeholder="Požadované krytie" inputmode="numeric" data-money-input />
+                </div>
+                <label class="switch-row">
+                  <input type="checkbox" name="Existujúce poistenie" value="Mám existujúce poistenie" />
+                  <span>Mám už existujúce poistenie na kontrolu</span>
+                </label>
+              </div>
+
+              <div class="service-panel" data-service-fields="Investície" hidden>
+                <p class="service-panel-title">Nastavenie investičného cieľa</p>
+                <div class="field-row">
+                  <select name="Investičný cieľ" aria-label="Investičný cieľ" required>
+                    <option value="">Investičný cieľ</option>
+                    <option value="Tvorba rezervy">Tvorba rezervy</option>
+                    <option value="Bývanie">Bývanie</option>
+                    <option value="Dôchodok">Dôchodok</option>
+                    <option value="Zhodnotenie úspor">Zhodnotenie úspor</option>
+                  </select>
+                  <input type="text" name="Mesačná investícia" placeholder="Mesačná suma" inputmode="numeric" data-money-input required />
+                </div>
+                <div class="field-row">
+                  <input type="text" name="Počiatočný vklad" placeholder="Počiatočný vklad" inputmode="numeric" data-money-input />
+                  <input type="number" name="Investičný horizont" min="1" max="60" placeholder="Horizont (roky)" inputmode="numeric" />
+                </div>
+                <select name="Vzťah k riziku" aria-label="Vzťah k riziku">
+                  <option value="">Ako vnímate investičné riziko?</option>
+                  <option value="Opatrný prístup">Chcem opatrný prístup</option>
+                  <option value="Vyvážený prístup">Vyvážený prístup</option>
+                  <option value="Dynamický prístup">Znesiem dynamický prístup</option>
+                </select>
+              </div>
+
+              <div class="service-panel" data-service-fields="Plánovanie a poradenstvo" hidden>
+                <p class="service-panel-title">S čím vám môžeme pomôcť?</p>
+                <select name="Téma poradenstva" aria-label="Téma poradenstva" required>
+                  <option value="">Vyberte oblasť</option>
+                  <option value="Komplexný finančný plán">Komplexný finančný plán</option>
+                  <option value="Rodinné financie">Rodinné financie</option>
+                  <option value="Dôchodok">Dôchodok</option>
+                  <option value="Kontrola existujúcich zmlúv">Kontrola existujúcich zmlúv</option>
+                </select>
+                <div class="field-row">
+                  <input type="text" name="Príjem domácnosti" placeholder="Príjem domácnosti" inputmode="numeric" data-money-input />
+                  <input type="text" name="Mesačné záväzky" placeholder="Mesačné záväzky" inputmode="numeric" data-money-input />
+                </div>
+              </div>
+            </div>
+
+            <div class="service-progress" id="serviceProgress" hidden>
+              <span>Správne informácie nám pomôžu pripraviť riešenie na mieru.</span>
+            </div>
+            <textarea name="Správa" placeholder="Napíšte nám, či hľadáte hypotéku, poistenie, investície alebo plánovanie." rows="4" required></textarea>
+            <label class="consent-row">
+              <input type="checkbox" name="GDPR súhlas" value="Súhlasím so spracovaním osobných údajov" required />
+              <span>
+                Súhlasím so spracovaním osobných údajov na účely vybavenia mojej požiadavky a kontaktovania.
+                Viac informácií nájdete v <a href="gdpr.html">ochrane osobných údajov</a>.
+              </span>
+            </label>
+            <label class="consent-row consent-optional">
+              <input type="checkbox" name="Marketingový súhlas" value="Súhlasím so zasielaním marketingových informácií" />
+              <span>Súhlasím aj so zasielaním občasných ponúk a užitočných informácií.</span>
+            </label>
+            <button type="submit" class="btn btn-primary">Odoslať požiadavku</button>
+            <p class="form-success" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section alt" id="pravne-informacie">
+        <div class="container">
+          <div class="section-heading left">
+            <span class="eyebrow">Právne informácie</span>
+            <h2>Všetko, čo klient potrebuje vidieť pre dôveru a transparentnosť</h2>
+          </div>
+
+          <div class="legal-grid">
+            <article class="legal-card">
+              <h3>Základné údaje</h3>
+              <ul>
+                <li>Názov spoločnosti: doplniť</li>
+                <li>Sídlo: doplniť</li>
+                <li>IČO: doplniť</li>
+                <li>DIČ: doplniť</li>
+                <li>Telefón: doplniť</li>
+                <li>E-mail: doplniť</li>
+              </ul>
+            </article>
+
+            <article class="legal-card">
+              <h3>Registračné údaje NBS</h3>
+              <p>Text</p>
+            </article>
+
+            <article class="legal-card">
+              <h3>Ochrana osobných údajov</h3>
+              <p>Osobné údaje z kontaktného formulára spracúvame len na vybavenie vašej požiadavky a následnú komunikáciu. Právnym základom je váš súhlas, ktorý môžete kedykoľvek odvolať e-mailom. Údaje neposkytujeme tretím stranám okrem nevyhnutných technických poskytovateľov a uchovávame ich len po dobu potrebnú na vybavenie požiadavky a splnenie zákonných povinností.</p>
+              <a class="legal-link" href="gdpr.html">Prečítať celé zásady ochrany osobných údajov →</a>
+            </article>
+
+            <article class="legal-card">
+              <h3>Reklamačný poriadok</h3>
+              <p>Informácie o spôsoboch reklamy, komunikácie s klientom, zodpovednosti a reklamných podmienkach vložte do tejto sekcie.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a href="#top" class="brand footer-brand">
+            <span class="brand-mark">FS</span>
+            <span class="brand-text">Finančný sprostredkovateľ</span>
+          </a>
+        </div>
+
+        <div class="footer-links">
+          <a href="#sluzby">Služby</a>
+          <a href="#proces">Proces</a>
+          <a href="#kalkulator">Kalkulačka</a>
+          <a href="#kontakt">Kontakt</a>
+          <a href="gdpr.html">Právne informácie</a>
+        </div>
+
+        <div class="footer-contact">
+          <a href="tel:+421912345678">+421 912 345 678</a>
+          <a href="mailto:info@financnypartner.sk">info@financnypartner.sk</a>
+        </div>
+
+        <div class="social-links" aria-label="Sociálne siete">
+          <a href="https://www.youtube.com/@financiepolopate1088" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
+          <a href="https://www.instagram.com/vavrinecstanislav/" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="TikTok">TK</a>
+          <a href="https://www.facebook.com/stanislav.vavrinec.9/" target="_blank" rel="noreferrer" aria-label="Facebook">FB</a>
+          <a href="https://www.facebook.com/profile.php?id=61592658331765" target="_blank" rel="noreferrer" aria-label="Facebook profil 2">FB</a>
+        </div>
+      </div>
+
+      <div class="container legal-info-wrap">
+        <div class="legal-info-block">
+          <h4>Registračné údaje NBS</h4>
+          <p>Pridať konkrétne údaje o registrácii a oprávnení.</p>
+        </div>
+        <div class="legal-info-block">
+          <h4>Identifikačné údaje</h4>
+          <p>Pridať názov spoločnosti, sídlo, IČO, DIČ a kontaktné údaje.</p>
+        </div>
+        <div class="legal-info-block">
+          <h4>Ochrana osobných údajov (GDPR)</h4>
+          <p>Pridať informácie o spracúvaní osobných údajov a kontaktoch.</p>
+        </div>
+        <div class="legal-info-block">
+          <h4>Reklamačný poriadok</h4>
+          <p>Pridať podrobnosti o reklamných zásadách a pravidlách spolupráce.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cookieBanner" class="cookie-banner hidden" aria-live="polite" aria-label="Cookies nastavenia">
+      <div class="container cookie-inner">
+        <div class="cookie-copy">
+          <h3>Cookies</h3>
+          <p>
+            Táto stránka používa nevyhnutné cookies pre správne fungovanie a voliteľné cookies pre analytiku a marketing.
+            Zvoľte si, aké cookies chcete povoliť.
+          </p>
+        </div>
+
+        <div class="cookie-controls">
+          <label class="cookie-option">
+            <input type="checkbox" checked disabled />
+            <span>Nevyhnutné</span>
+          </label>
+
+          <label class="cookie-option">
+            <input type="checkbox" id="analyticsCookie" />
+            <span>Analytické</span>
+          </label>
+
+          <label class="cookie-option">
+            <input type="checkbox" id="marketingCookie" />
+            <span>Marketingové</span>
+          </label>
+        </div>
+
+        <div class="cookie-actions">
+          <button type="button" id="cookieAcceptAll" class="btn btn-primary">Povoliť všetko</button>
+          <button type="button" id="cookieRejectAll" class="btn btn-secondary">Iba nevyhnutné</button>
+          <button type="button" id="cookieSavePrefs" class="btn btn-secondary">Uložiť nastavenia</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js?v=4"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "post-1788713363641",
+    "title": "dw",
+    "category": "wd",
+    "excerpt": "wd",
+    "content": "wd",
+    "createdAt": "2026-09-06"
+  },
+  {
+    "id": "post-1788713151672",
+    "title": "sqs",
+    "category": "qs",
+    "excerpt": "qsq",
+    "content": "qsq",
+    "createdAt": "2026-09-06"
+  },
+  {
+    "id": "post-1",
+    "title": "Ako si vybrať najvýhodnejšiu hypotéku",
+    "category": "Hypotéky",
+    "excerpt": "Na čo sa pozerať pri porovnávaní ponúk a ako znížiť riziko zbytočných nákladov.",
+    "content": "Pri výbere hypotéky nie je dôležitý len úrok. Sledujte celkové náklady, fixáciu, podmienky predčasného splatenia, poistenie a flexibilitu zmluvy. Správne porovnanie ponúk vám môže ušetriť tisíce eur počas celej doby splácania. Vždy si overte, či je úrok skutočne konkurencieschopný po započítaní poplatkov a doplnkových služieb.dd",
+    "createdAt": "2026-09-06"
+  },
+  {
+    "id": "post-2",
+    "title": "3 najčastejšie chyby pri refinancovaní úveru",
+    "category": "Refinancovanie",
+    "excerpt": "Mnoho ľudí zvažuje refinancovanie bez zhodnotenia skutočných nákladov a výhod.",
+    "content": "Refinancovanie je výhodné vtedy, keď zmenou úrokovej sadzby alebo podmienok zmluvy môžete výrazne znížiť mesačnú splátku alebo celkové náklady. Chyba je porovnávať len úrok bez poplatkov, výšky zostatku a rovnomernosti splácania. Pred rozhodnutím je vhodné zhodnotiť aj možnosť predčasného splatenia a podmienky nového úveru.",
+    "createdAt": "2026-07-25"
+  },
+  {
+    "id": "post-3",
+    "title": "Ako správne nastaviť poistenie majetku a osôb",
+    "category": "Poistenie",
+    "excerpt": "Dobrý poisťovací balíček nie je len o nízkej cene, ale hlavne o správnom pokrytí rizík.",
+    "content": "Poistenie by malo pokrývať to, čo je pre vás skutočne dôležité. Pri majetku zohľadnite hodnotu predmetu, riziká, výšku deduktívnosti a výnimky z poistenia. Pri poistení osôb overte, ako sa poistenie mení v prípade zmeny zamestnania, životných okolností alebo potreby financovania.",
+    "createdAt": "2026-08-04"
+  }
+]
