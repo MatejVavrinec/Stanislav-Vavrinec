@@ -219,7 +219,21 @@ async function loadPostsFromServer() {
       renderAdminPosts();
     }
   } catch (error) {
-    console.warn('[blog] server posts unavailable; using local copy', error);
+    try {
+      const response = await fetch('blog-posts.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Static blog data returned ${response.status}`);
+
+      const posts = await response.json();
+      if (!Array.isArray(posts)) throw new Error('Static blog data is invalid');
+
+      savePosts(posts);
+      renderBlogPosts();
+      if (adminPanel && !adminPanel.classList.contains('hidden')) {
+        renderAdminPosts();
+      }
+    } catch (staticError) {
+      console.warn('[blog] remote posts unavailable; using local copy', staticError);
+    }
   }
 }
 
