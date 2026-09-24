@@ -1642,6 +1642,33 @@ input[type="range"] {
 
 @media (max-width: 720px) {
   .cta-box {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 16px;
+  }
+
+  .legal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-info-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-contact-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .contact-form {
+    min-width: 0;
+  }
+
+  .cta-box {
     padding: 24px 16px;
     border-radius: 20px;
   }
