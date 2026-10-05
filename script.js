@@ -92,7 +92,7 @@ if (contactForm) {
 
     if (!consent || !consent.checked) {
       event.preventDefault();
-      if (formSuccess) formSuccess.textContent = 'Pre odoslanie požiadavky potvrďte súhlas so spracovaním osobných údajov.';
+      if (formSuccess) formSuccess.textContent = 'Pre odoslanie požiadavky potvrďte oboznámenie sa s informáciami o spracovaní osobných údajov.';
       consent?.focus();
       return;
     }
@@ -165,12 +165,11 @@ function getPosts() {
     const raw = localStorage.getItem(BLOG_STORAGE_KEY);
 
     if (!raw) {
-      localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(defaultBlogPosts));
       return [...defaultBlogPosts];
     }
 
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) && parsed.length ? parsed : [...defaultBlogPosts];
+    return Array.isArray(parsed) ? parsed : [...defaultBlogPosts];
   } catch (error) {
     return [...defaultBlogPosts];
   }
@@ -200,19 +199,13 @@ async function loadPostsFromServer() {
   if (!blogGrid) return;
 
   try {
-    const localPosts = getPosts();
     const response = await fetch(BLOG_API_URL, { cache: 'no-store' });
     if (!response.ok) throw new Error(`Blog API returned ${response.status}`);
 
     const serverPosts = await response.json();
     if (!Array.isArray(serverPosts)) throw new Error('Blog API returned an invalid payload');
 
-    const serverPostIds = new Set(serverPosts.map((post) => post.id));
-    const unsyncedLocalPosts = localPosts.filter((post) => !serverPostIds.has(post.id));
-    const posts = [...unsyncedLocalPosts, ...serverPosts];
-
-    savePosts(posts);
-    if (unsyncedLocalPosts.length) await syncPostsToServer(posts);
+    savePosts(serverPosts);
     renderBlogPosts();
 
     if (adminPanel && !adminPanel.classList.contains('hidden')) {
@@ -419,13 +412,13 @@ async function savePost(event) {
 async function deletePost(postId) {
   const posts = getPosts().filter((post) => post.id !== postId);
   savePosts(posts);
-  await syncPostsToServer(posts);
+  const synced = await syncPostsToServer(posts);
   renderBlogPosts();
   renderAdminPosts();
 
-  try {
-    console.debug('[blog] deleted posts, remaining:', getPosts().length);
-  } catch (e) {}
+  if (!synced) {
+    alert('Článok bol vymazaný iba v tomto prehliadači. Ak ho chcete vymazať natrvalo, spustite web cez server a vymažte ho znova.');
+  }
 }
 
 function editPost(postId) {
@@ -536,87 +529,6 @@ if (adminOverlay) {
 
 renderBlogPosts();
 loadPostsFromServer();
-
-const COOKIE_STORAGE_KEY = 'finance_cookie_consent_v1';
-const cookieBanner = document.getElementById('cookieBanner');
-const analyticsCookie = document.getElementById('analyticsCookie');
-const marketingCookie = document.getElementById('marketingCookie');
-const cookieAcceptAll = document.getElementById('cookieAcceptAll');
-const cookieRejectAll = document.getElementById('cookieRejectAll');
-const cookieSavePrefs = document.getElementById('cookieSavePrefs');
-
-function getCookieConsent() {
-  try {
-    const rawValue = localStorage.getItem(COOKIE_STORAGE_KEY);
-    if (!rawValue) return null;
-
-    const parsed = JSON.parse(rawValue);
-    return parsed && typeof parsed === 'object' ? parsed : null;
-  } catch (error) {
-    return null;
-  }
-}
-
-function hideCookieBanner() {
-  if (cookieBanner) cookieBanner.classList.add('hidden');
-}
-
-function showCookieBanner() {
-  if (cookieBanner) cookieBanner.classList.remove('hidden');
-}
-
-function applyCookieControls(settings = { analytics: false, marketing: false }) {
-  if (analyticsCookie) analyticsCookie.checked = Boolean(settings.analytics);
-  if (marketingCookie) marketingCookie.checked = Boolean(settings.marketing);
-}
-
-function saveCookieConsent(settings) {
-  const normalized = {
-    analytics: Boolean(settings.analytics),
-    marketing: Boolean(settings.marketing),
-    savedAt: new Date().toISOString()
-  };
-
-  try {
-    localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify(normalized));
-  } catch (error) {
-    // Ignore localStorage issues in restrictive browsers.
-  }
-
-  document.body.dataset.cookieConsent = normalized.analytics || normalized.marketing ? 'custom' : 'essential';
-  hideCookieBanner();
-}
-
-const existingConsent = getCookieConsent();
-
-if (existingConsent) {
-  applyCookieControls(existingConsent);
-  hideCookieBanner();
-} else {
-  applyCookieControls();
-  showCookieBanner();
-}
-
-if (cookieAcceptAll) {
-  cookieAcceptAll.addEventListener('click', () => {
-    saveCookieConsent({ analytics: true, marketing: true });
-  });
-}
-
-if (cookieRejectAll) {
-  cookieRejectAll.addEventListener('click', () => {
-    saveCookieConsent({ analytics: false, marketing: false });
-  });
-}
-
-if (cookieSavePrefs) {
-  cookieSavePrefs.addEventListener('click', () => {
-    saveCookieConsent({
-      analytics: analyticsCookie ? analyticsCookie.checked : false,
-      marketing: marketingCookie ? marketingCookie.checked : false
-    });
-  });
-}
 
 const loanAmount = document.getElementById('loanAmount');
 const loanTerm = document.getElementById('loanTerm');
