@@ -105,128 +105,27 @@ if (contactForm) {
   });
 }
 
-const ADMIN_PASSWORD = 'FinancnyAdmin2026';
-const BLOG_STORAGE_KEY = 'finance_blog_posts_v1';
-const ADMIN_SESSION_KEY = 'finance_blog_admin_logged';
-const BLOG_API_URL = '/api/posts';
-
-const defaultBlogPosts = [
-  {
-    id: 'post-1',
-    title: 'Ako si vybrať najvýhodnejšiu hypotéku',
-    category: 'Hypotéky',
-    excerpt: 'Na čo sa pozerať pri porovnávaní ponúk a ako znížiť riziko zbytočných nákladov.',
-    content: 'Pri výbere hypotéky nie je dôležitý len úrok. Sledujte celkové náklady, fixáciu, podmienky predčasného splatenia, poistenie a flexibilitu zmluvy. Správne porovnanie ponúk vám môže ušetriť tisíce eur počas celej doby splácania. Vždy si overte, či je úrok skutočne konkurencieschopný po započítaní poplatkov a doplnkových služieb.',
-    createdAt: '2026-07-18'
-  },
-  {
-    id: 'post-2',
-    title: '3 najčastejšie chyby pri refinancovaní úveru',
-    category: 'Refinancovanie',
-    excerpt: 'Mnoho ľudí mierne zvažuje refinancovanie bez zhodnotenia skutočných nákladov a výhod.',
-    content: 'Refinancovanie je výhodné vtedy, keď zmenou úrokovej sadzby alebo podmienok zmluvy môžete výrazne znížiť mesačnú splátku alebo celkové náklady. Chyba je porovnávať len úrok bez poplatkov, výšky zostatku a rovnomernosti splácania. Pred rozhodnutím je vhodné zhodnotiť aj možnosť predčasného splatenia a podmienky nového úveru.',
-    createdAt: '2026-07-25'
-  },
-  {
-    id: 'post-3',
-    title: 'Ako správne nastaviť poistenie majetku a osôb',
-    category: 'Poistenie',
-    excerpt: 'Dobrý poisťovací balíček nie je len o nízkej cene, ale hlavne o správnom pokrytí rizík.',
-    content: 'Poistenie by malo pokrývať to, čo je pre vás skutočne dôležité. Pri majetku zohľadnite hodnotu predmetu, riziká, výšku deduktívnosti a výnimky z poistenia. Pri poistení osôb overte, ako sa poistenie mení v prípade zmeny zamestnania, životných okolností alebo potreby financovania.',
-    createdAt: '2026-08-04'
-  }
-];
-
 const blogGrid = document.getElementById('blogGrid');
 const blogToggleButton = document.getElementById('blogToggleButton');
-const adminOverlay = document.getElementById('adminOverlay');
-const adminLoginBlock = document.getElementById('adminLoginBlock');
-const adminPanel = document.getElementById('adminPanel');
-const adminLoginForm = document.getElementById('adminLoginForm');
-const adminClose = document.getElementById('adminClose');
-const adminToggle = document.getElementById('adminToggle');
-const logoutAdmin = document.getElementById('logoutAdmin');
-const blogForm = document.getElementById('blogForm');
-const adminPostList = document.getElementById('adminPostList');
 const articleModal = document.getElementById('articleModal');
 const articleBody = document.getElementById('articleBody');
 const articleClose = document.getElementById('articleClose');
+let blogPosts = [];
 
-const blogFormFields = {
-  id: document.getElementById('postId'),
-  title: document.getElementById('postTitle'),
-  category: document.getElementById('postCategory'),
-  excerpt: document.getElementById('postExcerpt'),
-  content: document.getElementById('postContent')
-};
-
-function getPosts() {
-  try {
-    const raw = localStorage.getItem(BLOG_STORAGE_KEY);
-
-    if (!raw) {
-      return [...defaultBlogPosts];
-    }
-
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [...defaultBlogPosts];
-  } catch (error) {
-    return [...defaultBlogPosts];
-  }
-}
-
-function savePosts(posts) {
-  localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(posts));
-}
-
-async function syncPostsToServer(posts) {
-  try {
-    const response = await fetch(BLOG_API_URL, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(posts)
-    });
-
-    if (!response.ok) throw new Error(`Blog API returned ${response.status}`);
-    return true;
-  } catch (error) {
-    console.warn('[blog] server sync unavailable; keeping local copy', error);
-    return false;
-  }
-}
-
-async function loadPostsFromServer() {
+async function loadBlogPosts() {
   if (!blogGrid) return;
 
   try {
-    const response = await fetch(BLOG_API_URL, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`Blog API returned ${response.status}`);
+    const response = await fetch('blog-posts.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Blog data returned ${response.status}`);
 
-    const serverPosts = await response.json();
-    if (!Array.isArray(serverPosts)) throw new Error('Blog API returned an invalid payload');
+    const posts = await response.json();
+    if (!Array.isArray(posts)) throw new Error('Blog data is invalid');
 
-    savePosts(serverPosts);
+    blogPosts = posts;
     renderBlogPosts();
-
-    if (adminPanel && !adminPanel.classList.contains('hidden')) {
-      renderAdminPosts();
-    }
   } catch (error) {
-    try {
-      const response = await fetch('blog-posts.json', { cache: 'no-store' });
-      if (!response.ok) throw new Error(`Static blog data returned ${response.status}`);
-
-      const posts = await response.json();
-      if (!Array.isArray(posts)) throw new Error('Static blog data is invalid');
-
-      savePosts(posts);
-      renderBlogPosts();
-      if (adminPanel && !adminPanel.classList.contains('hidden')) {
-        renderAdminPosts();
-      }
-    } catch (staticError) {
-      console.warn('[blog] remote posts unavailable; using local copy', staticError);
-    }
+    console.error('[blog] failed to load blog-posts.json', error);
   }
 }
 
@@ -246,14 +145,7 @@ let showAllPosts = false;
 function renderBlogPosts() {
   if (!blogGrid) return;
 
-  const posts = getPosts();
-
-  // Debug: log counts to help diagnose disappearing posts
-  try {
-    console.debug('[blog] total posts:', posts.length, 'showAllPosts:', showAllPosts);
-  } catch (e) {
-    // ignore in browsers without console
-  }
+  const posts = blogPosts;
 
   if (posts.length <= 6) {
     showAllPosts = false;
@@ -287,32 +179,8 @@ function renderBlogPosts() {
   }
 }
 
-function renderAdminPosts() {
-  if (!adminPostList) return;
-
-  const posts = getPosts();
-
-  adminPostList.innerHTML = posts
-    .map(
-      (post) => `
-        <div class="admin-post-item">
-          <div>
-            <strong>${post.title}</strong>
-            <span>${post.category} · ${formatDate(post.createdAt)}</span>
-          </div>
-          <div class="admin-post-actions">
-            <button type="button" data-edit-id="${post.id}">Upraviť</button>
-            <button type="button" data-delete-id="${post.id}">Vymazať</button>
-          </div>
-        </div>
-      `
-    )
-    .join('');
-}
-
 function openArticleModal(postId) {
-  const posts = getPosts();
-  const post = posts.find((item) => item.id === postId);
+  const post = blogPosts.find((item) => item.id === postId);
 
   if (!post || !articleModal || !articleBody) return;
 
@@ -335,122 +203,6 @@ function closeArticleModal() {
   if (articleModal) articleModal.classList.add('hidden');
 }
 
-function resetBlogForm() {
-  blogFormFields.id.value = '';
-  blogFormFields.title.value = '';
-  blogFormFields.category.value = '';
-  blogFormFields.excerpt.value = '';
-  blogFormFields.content.value = '';
-}
-
-function toggleAdminUI(isAdmin) {
-  if (!adminOverlay || !adminLoginBlock || !adminPanel) return;
-
-  adminLoginBlock.classList.toggle('hidden', isAdmin);
-  adminPanel.classList.toggle('hidden', !isAdmin);
-  adminOverlay.classList.toggle('hidden', false);
-
-  if (isAdmin) {
-    renderAdminPosts();
-  }
-}
-
-function openAdmin() {
-  if (!adminOverlay) return;
-  adminOverlay.classList.remove('hidden');
-
-  const isLogged = sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
-  toggleAdminUI(isLogged);
-}
-
-function closeAdmin() {
-  if (!adminOverlay) return;
-  adminOverlay.classList.add('hidden');
-}
-
-async function savePost(event) {
-  event.preventDefault();
-
-  const title = blogFormFields.title.value.trim();
-  const category = blogFormFields.category.value.trim();
-  const excerpt = blogFormFields.excerpt.value.trim();
-  const content = blogFormFields.content.value.trim();
-
-  if (!title || !category || !excerpt || !content) return;
-
-  const posts = getPosts();
-  const id = blogFormFields.id.value || `post-${Date.now()}`;
-
-  const updatedPost = {
-    id,
-    title,
-    category,
-    excerpt,
-    content,
-    createdAt: new Date().toISOString().slice(0, 10)
-  };
-
-  const existingIndex = posts.findIndex((post) => post.id === id);
-
-  if (existingIndex >= 0) {
-    posts[existingIndex] = { ...posts[existingIndex], ...updatedPost };
-  } else {
-    posts.unshift(updatedPost);
-  }
-
-  savePosts(posts);
-  await syncPostsToServer(posts);
-  renderBlogPosts();
-  renderAdminPosts();
-  resetBlogForm();
-
-  try {
-    console.debug('[blog] saved posts:', getPosts().length);
-  } catch (e) {}
-}
-
-async function deletePost(postId) {
-  const posts = getPosts().filter((post) => post.id !== postId);
-  savePosts(posts);
-  const synced = await syncPostsToServer(posts);
-  renderBlogPosts();
-  renderAdminPosts();
-
-  if (!synced) {
-    alert('Článok bol vymazaný iba v tomto prehliadači. Ak ho chcete vymazať natrvalo, spustite web cez server a vymažte ho znova.');
-  }
-}
-
-function editPost(postId) {
-  const post = getPosts().find((item) => item.id === postId);
-
-  if (!post) return;
-
-  blogFormFields.id.value = post.id;
-  blogFormFields.title.value = post.title;
-  blogFormFields.category.value = post.category;
-  blogFormFields.excerpt.value = post.excerpt;
-  blogFormFields.content.value = post.content;
-
-  openAdmin();
-}
-
-if (adminToggle) {
-  adminToggle.addEventListener('click', () => {
-    const isLogged = sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
-    if (isLogged) {
-      toggleAdminUI(true);
-      openAdmin();
-    } else {
-      openAdmin();
-    }
-  });
-}
-
-if (adminClose) {
-  adminClose.addEventListener('click', closeAdmin);
-}
-
 if (articleClose) {
   articleClose.addEventListener('click', closeArticleModal);
 }
@@ -459,37 +211,6 @@ if (articleModal) {
   articleModal.addEventListener('click', (event) => {
     if (event.target === articleModal) closeArticleModal();
   });
-}
-
-if (adminLoginForm) {
-  adminLoginForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const passwordInput = document.getElementById('adminPassword');
-
-    if (passwordInput && passwordInput.value === ADMIN_PASSWORD) {
-      sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
-      toggleAdminUI(true);
-      passwordInput.value = '';
-      return;
-    }
-
-    alert('Nesprávne heslo.');
-  });
-}
-
-if (logoutAdmin) {
-  logoutAdmin.addEventListener('click', () => {
-    sessionStorage.removeItem(ADMIN_SESSION_KEY);
-    closeAdmin();
-  });
-}
-
-if (blogForm) {
-  blogForm.addEventListener('submit', savePost);
-}
-
-if (document.getElementById('resetPostForm')) {
-  document.getElementById('resetPostForm').addEventListener('click', resetBlogForm);
 }
 
 if (blogGrid) {
@@ -506,29 +227,7 @@ if (blogToggleButton) {
   });
 }
 
-if (adminPostList) {
-  adminPostList.addEventListener('click', (event) => {
-    const editButton = event.target.closest('[data-edit-id]');
-    const deleteButton = event.target.closest('[data-delete-id]');
-
-    if (editButton) {
-      editPost(editButton.dataset.editId);
-    }
-
-    if (deleteButton) {
-      deletePost(deleteButton.dataset.deleteId);
-    }
-  });
-}
-
-if (adminOverlay) {
-  adminOverlay.addEventListener('click', (event) => {
-    if (event.target === adminOverlay) closeAdmin();
-  });
-}
-
-renderBlogPosts();
-loadPostsFromServer();
+loadBlogPosts();
 
 const loanAmount = document.getElementById('loanAmount');
 const loanTerm = document.getElementById('loanTerm');
